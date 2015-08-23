@@ -24,7 +24,8 @@ def QueryServer(receipt_number):
   params = REQUEST_PARAMS
   params['appReceiptNum'] = receipt_number
   params_encoded =  urllib.urlencode(params)
-  req = urllib2.Request(REQUEST_URL, params_encoded)
+  headers={'User-agent' : 'Mozilla/5.0'}
+  req = urllib2.Request(REQUEST_URL, params_encoded, headers)
   f = urllib2.urlopen(req)
   response = f.read()
   f.close()
